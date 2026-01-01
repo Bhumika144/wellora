@@ -16,13 +16,14 @@ app.secret_key = 'your-secret-key'  # Change for production
 app.permanent_session_lifetime = timedelta(minutes=60)
 
 # ---------------- Database Connection ---------------- #
+
 def get_db_connection():
     """Establishes a connection to the MySQL database."""
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",  # Change as needed
-        database="skin_care_app"
+        host=os.getenv("MYSQL_HOST"),
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD"),
+        database=os.getenv("MYSQL_DATABASE")
     )
 from dotenv import load_dotenv
 import os
@@ -1607,3 +1608,4 @@ def progress_dandruff():
 # ----------------------------- Run App ----------------------------- #
 if __name__ == "__main__":
     app.run(port=5001, debug=True)
+
