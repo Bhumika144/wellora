@@ -7,4 +7,7 @@ mysql-connector-python  # You need this for your specific database connection lo
 requests
 gunicorn
 pandas
+scikit-learn
+
+
 
